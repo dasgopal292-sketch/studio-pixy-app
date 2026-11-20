@@ -1,0 +1,303 @@
+{
+  "entities": {
+    "StudioService": {
+      "title": "StudioService",
+      "description": "A photography, photo printing, photo framing, or video service offered by Studio Pixy.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Service or package display name."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["PRINT", "FRAME", "PACKAGE"],
+          "description": "Service category."
+        },
+        "size": {
+          "type": "string",
+          "description": "Print or frame dimensions, or package duration."
+        },
+        "frameType": {
+          "type": "string",
+          "description": "Material or type of frame when category is FRAME."
+        },
+        "frameDesign": {
+          "type": "string",
+          "description": "Style or finish design when category is FRAME."
+        },
+        "price": {
+          "type": "integer",
+          "description": "Unit price in Indian Rupees (INR)."
+        },
+        "unitLabel": {
+          "type": "string",
+          "description": "Pricing unit label (e.g., per print, per sheet, per frame, per package)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed service description."
+        },
+        "deliverables": {
+          "type": "string",
+          "description": "Included items or deliverables for packages or frames."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "Optional HTTPS image URL or bundled drawable key."
+        },
+        "published": {
+          "type": "boolean",
+          "description": "Whether the service is visible to customers."
+        },
+        "popular": {
+          "type": "boolean",
+          "description": "Whether the service is highlighted as popular."
+        },
+        "sortOrder": {
+          "type": "integer",
+          "description": "Display ordering index."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "name",
+        "category",
+        "size",
+        "frameType",
+        "frameDesign",
+        "price",
+        "unitLabel",
+        "description",
+        "deliverables",
+        "imageUrl",
+        "published",
+        "popular",
+        "sortOrder",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "StudioConfig": {
+      "title": "StudioConfig",
+      "description": "Studio Pixy business profile, contact details, WhatsApp ordering number, and location link.",
+      "type": "object",
+      "properties": {
+        "businessName": {
+          "type": "string",
+          "description": "Business name."
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Brand tagline."
+        },
+        "whatsappNumber": {
+          "type": "string",
+          "description": "WhatsApp phone number including country code."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Display phone number."
+        },
+        "email": {
+          "type": "string",
+          "description": "Studio contact email."
+        },
+        "address": {
+          "type": "string",
+          "description": "Studio street address."
+        },
+        "openingHours": {
+          "type": "string",
+          "description": "Business hours text."
+        },
+        "mapsUrl": {
+          "type": "string",
+          "description": "Google Maps URL for studio location."
+        },
+        "welcomeBannerTitle": {
+          "type": "string",
+          "description": "Home screen welcome banner headline."
+        },
+        "welcomeBannerSubtitle": {
+          "type": "string",
+          "description": "Home screen welcome banner subtitle."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "businessName",
+        "tagline",
+        "whatsappNumber",
+        "phoneNumber",
+        "email",
+        "address",
+        "openingHours",
+        "mapsUrl",
+        "welcomeBannerTitle",
+        "welcomeBannerSubtitle",
+        "updatedAt"
+      ]
+    },
+    "CustomerOrder": {
+      "title": "CustomerOrder",
+      "description": "A customer order or booking request submitted to Studio Pixy.",
+      "type": "object",
+      "properties": {
+        "orderCode": {
+          "type": "string",
+          "description": "Human-readable order reference code."
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Referenced service ID or custom type slug."
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "Name of ordered service or package."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["PRINT", "FRAME", "PACKAGE"],
+          "description": "Order category."
+        },
+        "selectedSize": {
+          "type": "string",
+          "description": "Selected print/frame size or package tier."
+        },
+        "selectedFrameType": {
+          "type": "string",
+          "description": "Selected frame material/type."
+        },
+        "selectedFrameDesign": {
+          "type": "string",
+          "description": "Selected frame design/finish."
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Ordered quantity."
+        },
+        "unitPrice": {
+          "type": "integer",
+          "description": "Unit price in INR."
+        },
+        "totalAmount": {
+          "type": "integer",
+          "description": "Calculated total price (unitPrice * quantity) in INR."
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer full name."
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Customer mobile number."
+        },
+        "customerNotes": {
+          "type": "string",
+          "description": "Additional order instructions or event details."
+        },
+        "photoCount": {
+          "type": "integer",
+          "description": "Number of photos attached/selected by the customer."
+        },
+        "photoSummary": {
+          "type": "string",
+          "description": "Summary of selected photo filenames or attachment notes."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "ACCEPTED", "IN_PROGRESS", "COMPLETED", "REJECTED"],
+          "description": "Order workflow status."
+        },
+        "customerUid": {
+          "type": "string",
+          "description": "Optional Firebase Auth UID if customer signed in; empty string for guest orders."
+        },
+        "adminRemarks": {
+          "type": "string",
+          "description": "Admin status update remarks."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "orderCode",
+        "serviceId",
+        "serviceName",
+        "category",
+        "selectedSize",
+        "selectedFrameType",
+        "selectedFrameDesign",
+        "quantity",
+        "unitPrice",
+        "totalAmount",
+        "customerName",
+        "customerPhone",
+        "customerNotes",
+        "photoCount",
+        "photoSummary",
+        "status",
+        "customerUid",
+        "adminRemarks",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AdminMember": {
+      "title": "AdminMember",
+      "description": "Authorized Studio Pixy administrator record keyed by Firebase Auth UID.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Verified administrator email."
+        },
+        "role": {
+          "type": "string",
+          "description": "Admin role identifier."
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/services/{serviceId}": {
+      "schema": { "$ref": "#/entities/StudioService" },
+      "description": "Published and draft Studio Pixy services across Photo Printing, Photo Frames, and Photography Packages."
+    },
+    "/studio_config/{configId}": {
+      "schema": { "$ref": "#/entities/StudioConfig" },
+      "description": "Studio Pixy business details and WhatsApp configuration (document ID: main)."
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/CustomerOrder" },
+      "description": "Customer photo printing, framing, and photography booking orders."
+    },
+    "/admins/{adminUid}": {
+      "schema": { "$ref": "#/entities/AdminMember" },
+      "description": "Admin role membership documents."
+    }
+  }
+}
